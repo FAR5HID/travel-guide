@@ -11,6 +11,8 @@ class Location(models.Model):
     category = ArrayField(models.CharField(max_length=100), blank=True, default=list)
 
     def __str__(self):
+        if self.district == self.name:
+            return self.name
         return f"{self.district} - {self.name} - {self.rating}"
 
 
