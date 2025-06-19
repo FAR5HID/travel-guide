@@ -48,26 +48,30 @@ def find_route(source_district, destination_district, budget, days, category):
         # Find all possible next moves from any location in the current route
         # to an unvisited destination in the target district.
         candidates = [
-            r
-            for r in all_possible_routes
-            if r.source.name in visited and r.destination.name not in visited
+            route_edge
+            for route_edge in all_possible_routes
+            if route_edge.source.name in visited
+            and route_edge.destination.name not in visited
         ]
         # Sort candidates to prioritize depth, then rating.
         # Primary key: depth of the source node (descending).
         # Secondary key: rating of the destination node (descending).
         sorted_candidates = sorted(
             candidates,
-            key=lambda r: (depth_map[r.source.name], r.destination.rating),
+            key=lambda route_edge: (
+                depth_map[route_edge.source.name],
+                route_edge.destination.rating,
+            ),
             reverse=True,
         )
 
         best_move_found = False
-        for r in sorted_candidates:
-            next_loc = r.destination
-            travel_time = r.travel_time
-            travel_cost = r.travel_cost
+        for route_edge in sorted_candidates:
+            next_location = route_edge.destination
+            travel_time = route_edge.travel_time
+            travel_cost = route_edge.travel_cost
             logger.debug(
-                f"Considering move to {next_loc.name} with travel time {travel_time} and cost {travel_cost}"
+                f"Considering move to {next_location.name} with travel time {travel_time} and cost {travel_cost}"
             )
 
             # Tentatively calculate next state
@@ -112,12 +116,12 @@ def find_route(source_district, destination_district, budget, days, category):
                 remaining_budget -= cost_of_move
 
             logger.info(
-                f"Moving to {next_loc.name}, current day: {current_day}, time spent today: {time_spent_today}, remaining budget: {remaining_budget}"
+                f"Moving to {next_location.name}, current day: {current_day}, time spent today: {time_spent_today}, remaining budget: {remaining_budget}"
             )
-            route.append(next_loc)
-            visited.add(next_loc.name)
+            route.append(next_location)
+            visited.add(next_location.name)
             # Update depth for the new location
-            depth_map[next_loc.name] = depth_map[r.source.name] + 1
+            depth_map[next_location.name] = depth_map[route_edge.source.name] + 1
             best_move_found = True
             break  # Found the best valid move, restart the search
 
@@ -126,10 +130,10 @@ def find_route(source_district, destination_district, budget, days, category):
 
     # Filter the generated route based on the category, always including the source or destination.
     final_route = [
-        loc.name
-        for loc in route
-        if (loc.name == source_district or loc.name == destination_district)
-        or (not category or category in loc.category)
+        location
+        for location in route
+        if (location.name == source_district or location.name == destination_district)
+        or (not category or category in location.category)
     ]
 
     return final_route

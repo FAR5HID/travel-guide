@@ -11,7 +11,7 @@ from rest_framework.permissions import (
 )
 from .utils import find_route
 from .models import Location
-from .serializers import SpotSerializer, UserSerializer
+from .serializers import LocationSerializer, UserSerializer
 
 
 class SignupView(CreateAPIView):
@@ -45,10 +45,6 @@ class RouteView(APIView):
         days = request.data.get("days")
         category = request.data.get("category")
 
-        route_names = find_route(source, destination, budget, days, category)
-        spots = Location.objects.filter(name__in=route_names)
-        # Re-order spots to match route_names
-        spot_map = {spot.name: spot for spot in spots}
-        ordered_spots = [spot_map[name] for name in route_names if name in spot_map]
-        serializer = SpotSerializer(ordered_spots, many=True)
+        route_locations = find_route(source, destination, budget, days, category)
+        serializer = LocationSerializer(route_locations, many=True)
         return Response({"route": serializer.data})

@@ -111,8 +111,8 @@ export default function Route({ token }) {
         <Box sx={{ mt: 3 }}>
           <Typography variant="h6">Suggested Route:</Typography>
           <ul>
-            {route.map(spot => (
-              <li key={spot.id}>{spot.name}</li>
+            {route.map(location => (
+              <li key={location.id}>{location.name}</li>
             ))}
           </ul>
         </Box>

@@ -17,13 +17,13 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-class SpotSerializer(serializers.ModelSerializer):
+class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
         fields = "__all__"
 
 
-class EdgeSerializer(serializers.ModelSerializer):
+class RouteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Route
         fields = "__all__"
