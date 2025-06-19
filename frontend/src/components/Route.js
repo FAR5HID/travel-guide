@@ -112,7 +112,7 @@ export default function Route({ token }) {
           <Typography variant="h6">Suggested Route:</Typography>
           <ul>
             {route.map(spot => (
-              <li key={spot.id}>{spot.name} ({spot.district})</li>
+              <li key={spot.id}>{spot.name}</li>
             ))}
           </ul>
         </Box>
