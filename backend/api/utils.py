@@ -1,8 +1,11 @@
+import logging
 from .models import Location, Route
 
 MAX_TRAVEL_MINUTES_PER_DAY = 540  # 9 hours
 FOOD_COST_PER_DAY = 800
 ACCOMMODATION_COST_PER_NIGHT = 800
+
+logger = logging.getLogger(__name__)
 
 
 def find_route(source_district, destination_district, budget, days, category):
@@ -63,7 +66,9 @@ def find_route(source_district, destination_district, budget, days, category):
             next_loc = r.destination
             travel_time = r.travel_time
             travel_cost = r.travel_cost
-            print(f"Considering move to {next_loc.name} with travel time {travel_time} and cost {travel_cost}")
+            logger.debug(
+                f"Considering move to {next_loc.name} with travel time {travel_time} and cost {travel_cost}"
+            )
 
             # Tentatively calculate next state
             temp_day = current_day
@@ -79,17 +84,21 @@ def find_route(source_district, destination_district, budget, days, category):
                 if budget:
                     # Accommodation for previous night + food for new day
                     cost_of_move += ACCOMMODATION_COST_PER_NIGHT + FOOD_COST_PER_DAY
-                    print(f"New day started, adding accommodation and food costs: {cost_of_move}")
+                    logger.debug(
+                        f"New day started, adding accommodation and food costs: {cost_of_move}"
+                    )
             else:
                 temp_time_today += travel_time
 
             # Check constraints
             if days_limit and temp_day > days_limit:
-                print(f"Exceeds day limit: {temp_day} > {days_limit}")
+                logger.debug(f"Exceeds day limit: {temp_day} > {days_limit}")
                 continue  # Exceeds day limit
 
             if budget and remaining_budget < cost_of_move:
-                print(f"Exceeds budget limit: {remaining_budget} < {cost_of_move}")
+                logger.debug(
+                    f"Exceeds budget limit: {remaining_budget} < {cost_of_move}"
+                )
                 continue  # Exceeds budget limit
 
             # If all checks pass, commit this move
@@ -102,7 +111,9 @@ def find_route(source_district, destination_district, budget, days, category):
             if budget:
                 remaining_budget -= cost_of_move
 
-            print(f"Moving to {next_loc.name}, current day: {current_day}, time spent today: {time_spent_today}, remaining budget: {remaining_budget}")
+            logger.info(
+                f"Moving to {next_loc.name}, current day: {current_day}, time spent today: {time_spent_today}, remaining budget: {remaining_budget}"
+            )
             route.append(next_loc)
             visited.add(next_loc.name)
             # Update depth for the new location

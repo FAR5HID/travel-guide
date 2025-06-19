@@ -124,3 +124,53 @@ CORS_ALLOW_CREDENTIALS = True
 # Default Field Type
 # =========================
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# =========================
+# Logging Configuration
+# =========================
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # to keep default loggers like django.db
+
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}] {levelname} {name} - {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',  # should be INFO for production
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+
+    'loggers': {
+        'django': {  # Django’s internal logger
+            'handlers': ['console'],
+            'level': 'INFO',  # DEBUG for extensive verbosity
+            'propagate': False,
+        },
+        '__main__': {  # for scripts running directly via manage.py
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'api': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}
