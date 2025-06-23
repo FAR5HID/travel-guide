@@ -41,7 +41,7 @@ def find_route(source_district, destination_district, budget, days, category):
     if budget:
         remaining_budget -= FOOD_COST_PER_DAY
         if remaining_budget < 0:
-            return [source_location.name]
+            return [source_location]
 
     while True:
         # Select next candidates

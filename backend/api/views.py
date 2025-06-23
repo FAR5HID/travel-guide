@@ -7,10 +7,8 @@ from rest_framework.views import APIView
 from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
-    IsAuthenticatedOrReadOnly,
 )
 from .utils import find_route
-from .models import Location
 from .serializers import LocationSerializer, UserSerializer
 
 
@@ -36,7 +34,7 @@ class LogoutView(APIView):
 
 
 class RouteView(APIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
 
     def post(self, request):
         source = request.data.get("source")
@@ -46,5 +44,7 @@ class RouteView(APIView):
         category = request.data.get("category")
 
         route_locations = find_route(source, destination, budget, days, category)
-        serializer = LocationSerializer(route_locations, many=True)
+        serializer = LocationSerializer(
+            route_locations, many=True, context={"request": request}
+        )
         return Response({"route": serializer.data})

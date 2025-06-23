@@ -1,29 +1,50 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api/',
-  timeout: 1000,
+  baseURL: process.env.REACT_APP_API_BASE_URL,
+  timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
 export const signup = async (username, password) => {
-  return api.post('signup/', { username, password }).then(res => res.data);
+  try {
+    const res = await api.post('signup/', { username, password });
+    return res.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
 };
 
 export const login = async (username, password) => {
-  return api.post('login/', { username, password }).then(res => res.data);
+  try {
+    const res = await api.post('login/', { username, password });
+    return res.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
 };
 
 export const logout = async (token) => {
-  return api.post('logout/', {}, {
-    headers: { Authorization: `Token ${token}` }
-  });
+  try {
+    return await api.post(
+      'logout/',
+      {},
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    );
+  } catch (error) {
+    throw error.response?.data || error;
+  }
 };
 
-export const getRoute = async (params, token) => {
-  return api.post('route/', params, {
-    headers: token ? { Authorization: `Token ${token}` } : {},
-  }).then(res => res.data);
+export const getRoute = async (params) => {
+  try {
+    const res = await api.post('route/', params);
+    return res.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
 };
