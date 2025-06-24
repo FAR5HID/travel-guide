@@ -34,8 +34,7 @@ def find_route(source_district, destination_district, budget, days, category):
     # State variables for constraints
     current_day = 1
     time_spent_today = 0  # in minutes
-    remaining_budget = int(budget) if budget else float("inf")
-    days_limit = int(days) if days else None
+    remaining_budget = budget or float("inf")
 
     # Handle initial costs for Day 1
     if budget:
@@ -95,8 +94,8 @@ def find_route(source_district, destination_district, budget, days, category):
                 temp_time_today += travel_time
 
             # Check constraints
-            if days_limit and temp_day > days_limit:
-                logger.debug(f"Exceeds day limit: {temp_day} > {days_limit}")
+            if days and temp_day > days:
+                logger.debug(f"Exceeds day limit: {temp_day} > {days}")
                 continue  # Exceeds day limit
 
             if budget and remaining_budget < cost_of_move:

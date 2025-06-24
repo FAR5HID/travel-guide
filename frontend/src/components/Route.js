@@ -19,7 +19,8 @@ import {
 
 // Project-specific imports
 import { getRoute } from '../services/api';
-import { DISTRICTS, CATEGORIES } from '../constants/options';
+import { DISTRICTS, CATEGORIES, TRAVEL_TIERS } from '../constants/options';
+import { validateDateRange } from '../form/validation';
 
 const columns = { xs: 1, sm: 2, md: 3, lg: 4 }; // Grid breakpoints
 
@@ -68,7 +69,9 @@ export default function Route() {
     source: '',
     destination: '',
     budget: '',
-    days: '',
+    tier: '',
+    start_date: '',
+    end_date: '',
     category: '',
   });
   const [route, setRoute] = useState(null);
@@ -81,13 +84,24 @@ export default function Route() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     setError(null);
+    const dateError = validateDateRange(form.start_date, form.end_date);
+    if (dateError) {
+      setError(dateError);
+      return;
+    }
+    setLoading(true);
     try {
       const data = await getRoute(form);
       setRoute(data.route);
     } catch (err) {
-      setError('Failed to fetch route');
+      if (err && err.error) {
+        setError(err.error);
+      } else if (err && err.detail) {
+        setError(err.detail);
+      } else {
+        setError('Failed to fetch route');
+      }
     } finally {
       setLoading(false);
     }
@@ -161,13 +175,42 @@ export default function Route() {
             sx={{ flex: 1 }}
           />
 
+          <FormControl sx={{ flex: 1 }}>
+            <InputLabel id="tier-label">Travel Tier</InputLabel>
+            <Select
+              labelId="tier-label"
+              id="tier"
+              name="tier"
+              value={form.tier}
+              label="Travel Tier"
+              onChange={handleChange}
+            >
+              {TRAVEL_TIERS.map((tier) => (
+                <MenuItem key={tier.value} value={tier.value}>
+                  {tier.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
           <TextField
-            label="Days"
-            name="days"
-            type="number"
-            value={form.days}
+            label="Start Date"
+            name="start_date"
+            type="date"
+            value={form.start_date}
             onChange={handleChange}
             sx={{ flex: 1 }}
+            slotProps={{ inputLabel: { shrink: true } }}
+          />
+
+          <TextField
+            label="End Date"
+            name="end_date"
+            type="date"
+            value={form.end_date}
+            onChange={handleChange}
+            sx={{ flex: 1 }}
+            slotProps={{ inputLabel: { shrink: true } }}
           />
 
           <FormControl sx={{ flex: 1 }}>

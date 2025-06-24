@@ -10,6 +10,7 @@ from rest_framework.permissions import (
 )
 from .utils import find_route
 from .serializers import LocationSerializer, UserSerializer
+from datetime import datetime
 
 
 class SignupView(CreateAPIView):
@@ -40,8 +41,33 @@ class RouteView(APIView):
         source = request.data.get("source")
         destination = request.data.get("destination")
         budget = request.data.get("budget")
-        days = request.data.get("days")
+        tier = request.data.get("tier")
+        start_date = request.data.get("start_date")
+        end_date = request.data.get("end_date")
         category = request.data.get("category")
+
+        # Calculate days from start_date and end_date
+        days = None
+        if start_date and end_date:
+            try:
+                d1 = datetime.strptime(start_date, "%Y-%m-%d")
+                d2 = datetime.strptime(end_date, "%Y-%m-%d")
+                if d2 < d1:
+                    return Response({"error": "End date must be after start date."}, status=400)
+                days = (d2 - d1).days + 1
+            except ValueError:
+                return Response({"error": "Invalid date format. Use YYYY-MM-DD."}, status=400)
+
+        # Apply tier divisor if both budget and tier are provided
+        if budget:
+            try:
+                budget = float(budget)
+                if tier:
+                    budget = budget / float(tier)
+            except ValueError:
+                return Response({"error": "Budget and tier must be numbers."}, status=400)
+        else:
+            budget = None
 
         route_locations = find_route(source, destination, budget, days, category)
         serializer = LocationSerializer(
