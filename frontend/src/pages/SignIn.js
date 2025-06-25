@@ -11,8 +11,6 @@ import Link from '@mui/material/Link';
 
 // Project components
 import Typography from '../components/Typography';
-import AppFooter from '../views/AppFooter';
-import AppAppBar from '../views/AppAppBar';
 import AppForm from '../views/AppForm';
 import RFTextField from '../form/RFTextField';
 import FormButton from '../form/FormButton';
@@ -47,7 +45,6 @@ function SignIn({ onAuth }) {
 
   return (
     <React.Fragment>
-      <AppAppBar />
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
@@ -117,7 +114,6 @@ function SignIn({ onAuth }) {
           )}
         </Form>
       </AppForm>
-      <AppFooter />
     </React.Fragment>
   );
 }

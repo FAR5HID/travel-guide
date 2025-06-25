@@ -1,7 +1,8 @@
-import { styled } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Container from '@mui/material/Container';
+import { styled } from '@mui/material/styles';
 import Typography from '../components/Typography';
 import { CATEGORIES } from '../constants/options';
 
@@ -116,7 +117,6 @@ export default function LocationCategories() {
       <Typography variant="h4" marked="center" align="center" component="h2">
         Destinations for every passion and every dream
       </Typography>
-      {/* Responsive: Use flex and wrap for all breakpoints */}
       <Box
         sx={{
           mt: 8,
@@ -135,8 +135,9 @@ export default function LocationCategories() {
             role="button"
             aria-label={image.title}
             tabIndex={0}
+            component={Link}
+            to={`/category/${encodeURIComponent(image.title)}`}
           >
-            {/* Accessibility: Use visually hidden img for alt text */}
             <Box
               component="img"
               src={image.url}

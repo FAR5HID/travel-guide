@@ -48,3 +48,23 @@ export const getRoute = async (params) => {
     throw error.response?.data || error;
   }
 };
+
+export const getLocationsByCategory = async (category) => {
+  try {
+    const res = await api.get('locations/', {
+      params: { category },
+    });
+    return res.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
+};
+
+export const getLocationDetails = async (id) => {
+  try {
+    const res = await api.get(`locations/${id}/`);
+    return res.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
+};

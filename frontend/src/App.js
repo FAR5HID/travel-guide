@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './layout/Layout';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import CategoryPage from './pages/CategoryPage';
+import LocationDetails from './pages/LocationDetails';
 
 function App() {
   const [auth, setAuth] = useState(() => {
@@ -22,11 +25,20 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home auth={auth} onAuth={handleAuth} onLogout={handleLogout} />} />
-        <Route path="/signin" element={<SignIn onAuth={handleAuth} />} />
-        <Route path="/signup" element={<SignUp onAuth={handleAuth} />} />
-      </Routes>
+      <Layout auth={auth} onLogout={handleLogout}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home auth={auth} onAuth={handleAuth} onLogout={handleLogout} />
+            }
+          />
+          <Route path="/signin" element={<SignIn onAuth={handleAuth} />} />
+          <Route path="/signup" element={<SignUp onAuth={handleAuth} />} />
+          <Route path="/category/:categoryName" element={<CategoryPage />} />
+          <Route path="/location/:id" element={<LocationDetails />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }

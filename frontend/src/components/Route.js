@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // MUI components
 import {
@@ -15,6 +16,7 @@ import {
   Grid,
   useTheme,
   useMediaQuery,
+  CircularProgress,
 } from '@mui/material';
 
 // Project-specific imports
@@ -58,6 +60,7 @@ export default function Route() {
   const isSm = useMediaQuery(theme.breakpoints.only('sm'));
   const isMd = useMediaQuery(theme.breakpoints.only('md'));
   const isLg = useMediaQuery(theme.breakpoints.up('lg'));
+  const navigate = useNavigate();
 
   let currentCols = 1;
   if (isLg) currentCols = columns.lg;
@@ -114,9 +117,11 @@ export default function Route() {
         onSubmit={handleSubmit}
         sx={{
           p: 2,
+          pb: 4,
           border: '1px solid #eee',
           borderRadius: 2,
           bgcolor: 'background.paper',
+          boxShadow: 3,
         }}
         aria-label="Travel Route Search Form"
       >
@@ -252,13 +257,16 @@ export default function Route() {
             mt: 1,
           }}
         >
-          {loading && <Typography>Loading...</Typography>}
+          {loading && <CircularProgress size={24} />}
           {error && <Typography color="error">{error}</Typography>}
         </Box>
         {route && (
-          <Box sx={{ mt: 3 }}>
-            <Typography variant="h6">Suggested Route:</Typography>
-            <Grid container spacing={2} sx={{ mt: 2 }}>
+          <Box sx={{ mt: 3, pb: 4 }}>
+            <Grid
+              container
+              spacing={2}
+              sx={{ mt: 2, justifyContent: 'center' }}
+            >
               {route.map((location, idx) => (
                 <Grid
                   item
@@ -288,18 +296,24 @@ export default function Route() {
                       borderRadius: 3,
                       p: 0,
                       bgcolor: 'background.default',
-                      boxShadow: 3,
+                      boxShadow: 6,
                       overflow: 'hidden',
                       transition:
                         'transform 0.2s, box-shadow 0.3s, border-radius 0.6s',
                       position: 'relative',
                       zIndex: 1,
+                      cursor: 'pointer',
                       '&:hover': {
                         transform: 'scale(1.07)',
-                        boxShadow: 6,
+                        boxShadow: 12,
                         borderRadius: 0,
                       },
                     }}
+                    onClick={() =>
+                      location.id && navigate(`/location/${location.id}`)
+                    }
+                    tabIndex={0}
+                    aria-label={`View details for ${location.name}`}
                   >
                     <Box
                       onMouseEnter={() => setHoveredIdx(idx)}
