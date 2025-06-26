@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from ckeditor.fields import RichTextField
 
 
 class Location(models.Model):
     name = models.CharField(max_length=100, unique=True)
     image = models.ImageField(upload_to="pics", blank=True, null=True)
-    description = models.TextField(blank=True)
+    description = RichTextField(blank=True)
     rating = models.FloatField(default=0)
     district = models.CharField(max_length=100, db_index=True)
     category = ArrayField(models.CharField(max_length=100), blank=True, default=list)

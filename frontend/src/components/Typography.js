@@ -73,6 +73,16 @@ const variantMapping = {
 function Typography(props) {
   const { children, variant, marked = 'none', ...other } = props;
 
+  if (other.dangerouslySetInnerHTML) {
+    return (
+      <MuiTypography
+        variantMapping={variantMapping}
+        variant={variant}
+        {...other}
+      />
+    );
+  }
+
   let markedClassName = '';
   if (variant && variant in markClassesMapping[marked]) {
     markedClassName = markClassesMapping[marked][variant];

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
+import DOMPurify from 'dompurify';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
-import Modal from '@mui/material/Modal';
+import Typography from '../components/Typography';
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-import Typography from '../components/Typography';
 import { getLocationDetails } from '../services/api';
 
 function renderStars(rating) {
@@ -26,7 +26,8 @@ export default function LocationDetails() {
   const { id } = useParams();
   const [location, setLocation] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [open, setOpen] = useState(false);
+  const [hover, setHover] = useState(false);
+  const [ignoreNextHover, setIgnoreNextHover] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -64,9 +65,14 @@ export default function LocationDetails() {
           marginLeft: '-50vw',
           marginRight: '-50vw',
           maxWidth: '100vw',
-          cursor: 'zoom-in',
         }}
-        onClick={() => setOpen(true)}
+        onMouseEnter={() => {
+          if (!ignoreNextHover) setHover(true);
+        }}
+        onMouseLeave={() => setHover(false)}
+        onMouseMove={() => {
+          if (ignoreNextHover) setIgnoreNextHover(false);
+        }}
         tabIndex={0}
         aria-label="View full image"
       >
@@ -127,42 +133,53 @@ export default function LocationDetails() {
             {location.rating.toFixed(1)}
           </Typography>
         </Box>
-      </Box>
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <Box
-          sx={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            bgcolor: 'rgba(0,0,0,0.92)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1300,
-            cursor: 'zoom-out',
-          }}
-          onClick={() => setOpen(false)}
-        >
+        {hover && (
           <Box
-            component="img"
-            src={location.image}
-            alt={location.name}
             sx={{
-              maxWidth: '90vw',
-              maxHeight: '90vh',
-              borderRadius: 3,
-              boxShadow: 10,
-              transform: 'scale(0.95)',
-              transition: 'transform 0.4s cubic-bezier(.4,2,.6,1)',
-              '&:hover': {
-                transform: 'scale(1.04) rotate(-1deg)',
-              },
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1300,
+              background:
+                'linear-gradient(120deg, rgba(31, 28, 28, 0.35) 0%, rgba(255,255,255,0.18) 100%)',
+              boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
+              border: '1.5px solid rgba(255,255,255,0.25)',
+              transition: 'background 0.3s',
             }}
-          />
-        </Box>
-      </Modal>
+            onMouseLeave={() => setHover(false)}
+            onClick={() => {
+              setHover(false);
+              setIgnoreNextHover(true);
+            }}
+            tabIndex={0}
+            aria-label="Close full image"
+          >
+            <Box
+              component="img"
+              src={location.image}
+              alt={location.name}
+              sx={{
+                maxWidth: '90vw',
+                maxHeight: '90vh',
+                borderRadius: 3,
+                boxShadow: 16,
+                background: 'rgba(255,255,255,0.08)',
+                opacity: 1,
+                transform: 'scale(0.97)',
+                transition: 'transform 0.4s cubic-bezier(.4,2,.6,1)',
+                '&:hover': {
+                  transform: 'scale(1.04) rotate(-1deg)',
+                },
+              }}
+            />
+          </Box>
+        )}
+      </Box>
       <Container
         sx={{
           position: 'relative',
@@ -178,10 +195,12 @@ export default function LocationDetails() {
       >
         <Typography
           variant="body1"
-          sx={{ color: 'text.secondary', fontSize: 18, whiteSpace: 'pre-line' }}
-        >
-          {location.description}
-        </Typography>
+          sx={{ color: 'text.secondary', fontSize: 18 }}
+          component="div"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(location.description),
+          }}
+        />
       </Container>
     </>
   );
