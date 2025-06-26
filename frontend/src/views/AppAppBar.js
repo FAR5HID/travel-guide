@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import AppBar from '../components/AppBar';
+import ProfileMenu from '../components/ProfileMenu';
 import Toolbar from '../components/Toolbar';
+import AuthContext from '../context/AuthContext';
 
 const rightLink = {
   fontSize: 16,
@@ -10,7 +13,8 @@ const rightLink = {
   ml: 3,
 };
 
-function AppAppBar({ auth, onLogout }) {
+function AppAppBar({ onLogout }) {
+  const auth = useContext(AuthContext);
   return (
     <>
       <AppBar position="fixed">
@@ -40,7 +44,9 @@ function AppAppBar({ auth, onLogout }) {
             {'travel guide'}
           </Link>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            {!auth ? (
+            {auth && auth.token ? (
+              <ProfileMenu onLogout={onLogout} />
+            ) : (
               <>
                 <Link
                   color="inherit"
@@ -64,17 +70,6 @@ function AppAppBar({ auth, onLogout }) {
                   {'Sign Up'}
                 </Link>
               </>
-            ) : (
-              <Link
-                variant="h6"
-                underline="none"
-                onClick={onLogout}
-                component="button"
-                sx={{ ...rightLink, color: 'secondary.main' }}
-                aria-label="Logout"
-              >
-                {'Logout'}
-              </Link>
             )}
           </Box>
         </Toolbar>

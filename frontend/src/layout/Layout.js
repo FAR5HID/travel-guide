@@ -2,10 +2,10 @@ import Box from '@mui/material/Box';
 import AppAppBar from '../views/AppAppBar';
 import AppFooter from '../views/AppFooter';
 
-export default function Layout({ children, auth, onLogout }) {
+export default function Layout({ children, onLogout }) {
   return (
     <>
-      <AppAppBar auth={auth} onLogout={onLogout} />
+      <AppAppBar onLogout={onLogout} />
       <Box
         sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
       >

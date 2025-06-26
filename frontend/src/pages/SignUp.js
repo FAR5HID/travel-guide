@@ -28,13 +28,22 @@ function SignUp({ onAuth }) {
   const navigate = useNavigate();
 
   const validate = (values) => {
-    return required(['username', 'password'], values);
+    return required(
+      ['username', 'password', 'first_name', 'last_name', 'mobile'],
+      values
+    );
   };
 
   const handleSubmit = async (values) => {
     setSent(true);
     try {
-      const data = await signup(values.username, values.password);
+      const data = await signup(
+        values.username,
+        values.password,
+        values.first_name,
+        values.last_name,
+        values.mobile
+      );
       onAuth(data);
       navigate('/');
     } catch (err) {
@@ -86,6 +95,33 @@ function SignUp({ onAuth }) {
                 autoComplete="new-password"
                 label="Password"
                 type="password"
+                margin="normal"
+              />
+              <Field
+                fullWidth
+                component={RFTextField}
+                disabled={submitting || sent}
+                required
+                name="first_name"
+                label="First Name"
+                margin="normal"
+              />
+              <Field
+                fullWidth
+                component={RFTextField}
+                disabled={submitting || sent}
+                required
+                name="last_name"
+                label="Last Name"
+                margin="normal"
+              />
+              <Field
+                fullWidth
+                component={RFTextField}
+                disabled={submitting || sent}
+                required
+                name="mobile"
+                label="Mobile"
                 margin="normal"
               />
               <FormSpy subscription={{ submitError: true }}>

@@ -8,9 +8,21 @@ const api = axios.create({
   },
 });
 
-export const signup = async (username, password) => {
+export const signup = async (
+  username,
+  password,
+  first_name,
+  last_name,
+  mobile
+) => {
   try {
-    const res = await api.post('signup/', { username, password });
+    const res = await api.post('signup/', {
+      username,
+      password,
+      first_name,
+      last_name,
+      mobile,
+    });
     return res.data;
   } catch (error) {
     throw error.response?.data || error;
@@ -63,6 +75,47 @@ export const getLocationsByCategory = async (category) => {
 export const getLocationDetails = async (id) => {
   try {
     const res = await api.get(`locations/${id}/`);
+    return res.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
+};
+
+export const getProfile = async (username, token) => {
+  try {
+    const res = await api.get(
+      `profile/${username}/`,
+      token ? { headers: { Authorization: `Token ${token}` } } : {}
+    );
+    return res.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
+};
+
+export const getMyProfile = async (token) => {
+  try {
+    const res = await api.get('profile/me/', {
+      headers: { Authorization: `Token ${token}` },
+    });
+    return res.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
+};
+
+export const updateMyProfile = async (token, { district, about_me, photo }) => {
+  const formData = new FormData();
+  if (district !== undefined) formData.append('district', district);
+  if (about_me !== undefined) formData.append('about_me', about_me);
+  if (photo) formData.append('photo', photo);
+  try {
+    const res = await api.patch('profile/me/', formData, {
+      headers: {
+        Authorization: `Token ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return res.data;
   } catch (error) {
     throw error.response?.data || error;
