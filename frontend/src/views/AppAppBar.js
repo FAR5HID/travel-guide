@@ -22,9 +22,21 @@ function AppAppBar({ auth, onLogout }) {
             color="inherit"
             component={RouterLink}
             to="/"
-            sx={{ fontSize: 24 }}
+            sx={{ display: 'flex', alignItems: 'center', fontSize: 24 }}
             aria-label="Home"
           >
+            <Box
+              component="img"
+              src={process.env.PUBLIC_URL + '/icons/favicon.png'}
+              alt="logo"
+              sx={{
+                width: 50,
+                height: 50,
+                mr: 1,
+                display: 'inline-block',
+                verticalAlign: 'middle',
+              }}
+            />
             {'travel guide'}
           </Link>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
