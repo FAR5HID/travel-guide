@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import DOMPurify from 'dompurify';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -8,36 +8,150 @@ import Typography from '../components/Typography';
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-import { getLocationDetails } from '../services/api';
+import {
+  getLocationDetails,
+  rateLocation,
+  removeRating,
+} from '../services/api';
+import AuthContext from '../context/AuthContext';
+
+const glossyStarStyle = {
+  filter: 'drop-shadow(0px 2px 4px rgba(0, 0, 0, 1))',
+  transition: 'all 0.2s ease-in-out',
+};
 
 function renderStars(rating) {
   const stars = [];
   const full = Math.floor(rating);
   const half = rating - full >= 0.25 && rating - full < 0.75;
-  for (let i = 0; i < full; i++)
-    stars.push(<StarIcon key={i} sx={{ color: '#FFD600' }} />);
-  if (half) stars.push(<StarHalfIcon key="half" sx={{ color: '#FFD600' }} />);
-  for (let i = stars.length; i < 5; i++)
-    stars.push(<StarBorderIcon key={i + 10} sx={{ color: '#FFD600' }} />);
+
+  for (let i = 0; i < full; i++) {
+    stars.push(
+      <StarIcon
+        key={`full-${i}`}
+        sx={{ ...glossyStarStyle, fontSize: 24, color: '#FFD600' }}
+      />
+    );
+  }
+
+  if (half) {
+    stars.push(
+      <StarHalfIcon
+        key="half"
+        sx={{ ...glossyStarStyle, fontSize: 24, color: '#FFD600' }}
+      />
+    );
+  }
+
+  for (let i = stars.length; i < 5; i++) {
+    stars.push(
+      <StarBorderIcon
+        key={`empty-${i}`}
+        sx={{ ...glossyStarStyle, fontSize: 24, color: '#FFD600' }}
+      />
+    );
+  }
   return stars;
+}
+
+function UserRatingStars({ locationId, userRating, onRated }) {
+  const { user, token } = useContext(AuthContext) || {};
+  const [hovered, setHovered] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  if (!user) return null;
+
+  const handleRate = async (value) => {
+    setSubmitting(true);
+    try {
+      await rateLocation(locationId, value, token);
+      onRated(value);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleRemove = async () => {
+    setSubmitting(true);
+    try {
+      await removeRating(locationId, token);
+      onRated(null);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  // Always show 5 stars. Fill up to hovered, else up to userRating.
+  return (
+    <Box sx={{ display: 'flex', alignItems: 'center', mt: 1, minWidth: 200 }}>
+      {[1, 2, 3, 4, 5].map((star) => {
+        const fill =
+          hovered !== null
+            ? star <= hovered
+            : userRating
+            ? star <= userRating
+            : false;
+        return (
+          <StarIcon
+            key={star}
+            sx={{
+              ...glossyStarStyle,
+              fontSize: 24,
+              color: fill ? '#1976d2' : 'transparent', // Fill color
+              stroke: '#1976d2', // Border color
+              strokeWidth: 1,
+              cursor: submitting ? 'not-allowed' : 'pointer',
+              '&:hover': {
+                transform: 'scale(1.15)',
+              },
+            }}
+            onMouseEnter={() => setHovered(star)}
+            onMouseLeave={() => setHovered(null)}
+            onClick={() => !submitting && handleRate(star)}
+            data-testid={`user-star-${star}`}
+          />
+        );
+      })}
+      <Box
+        component={userRating ? 'button' : 'div'}
+        onClick={userRating ? handleRemove : undefined}
+        disabled={submitting}
+        sx={{
+          ml: 2,
+          color: 'rgba(255, 255, 255, 0.8)',
+          background: 'none',
+          border: 'none',
+          cursor: userRating ? 'pointer' : 'default',
+          fontWeight: 600,
+          minWidth: '60px',
+          textAlign: 'center',
+        }}
+      >
+        {userRating ? 'Remove' : 'Rate'}
+      </Box>
+    </Box>
+  );
 }
 
 export default function LocationDetails() {
   const { id } = useParams();
+  const auth = useContext(AuthContext);
+  const token = auth?.token;
   const [location, setLocation] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [hover, setHover] = useState(false);
-  const [ignoreNextHover, setIgnoreNextHover] = useState(false);
+  const [isFullViewOpen, setFullViewOpen] = useState(false);
+  const [userRating, setUserRating] = useState(null);
 
   useEffect(() => {
     setLoading(true);
-    getLocationDetails(id)
+    getLocationDetails(id, token)
       .then((data) => {
         setLocation(data);
+        setUserRating(data.user_rating || null);
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [id]);
+  }, [id, token]);
 
   if (loading)
     return (
@@ -65,13 +179,12 @@ export default function LocationDetails() {
           marginLeft: '-50vw',
           marginRight: '-50vw',
           maxWidth: '100vw',
+          cursor: 'pointer',
         }}
-        onMouseEnter={() => {
-          if (!ignoreNextHover) setHover(true);
-        }}
-        onMouseLeave={() => setHover(false)}
-        onMouseMove={() => {
-          if (ignoreNextHover) setIgnoreNextHover(false);
+        onClick={(e) => {
+          // Prevent opening image if click is on rating section
+          if (e.target.closest('.rating-overlay')) return;
+          setFullViewOpen(true);
         }}
         tabIndex={0}
         aria-label="View full image"
@@ -91,7 +204,7 @@ export default function LocationDetails() {
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             zIndex: 2,
-            p: 0,
+            p: 1,
             m: 0,
           }}
         >
@@ -116,24 +229,37 @@ export default function LocationDetails() {
           {location.district}
         </Typography>
         <Box
+          className="rating-overlay"
           sx={{
             position: 'absolute',
             right: 32,
             bottom: 32,
             display: 'flex',
             alignItems: 'center',
-            zIndex: 2,
+            zIndex: 20,
+            flexDirection: 'column',
+            gap: 1,
+            background: 'rgba(0,0,0,0.35)',
+            borderRadius: 2,
+            p: 1,
           }}
         >
-          {renderStars(location.rating)}
-          <Typography
-            variant="body2"
-            sx={{ color: 'white', ml: 1, fontWeight: 700 }}
-          >
-            {location.rating.toFixed(1)}
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            {renderStars(location.rating)}
+            <Typography
+              variant="body2"
+              sx={{ color: 'white', ml: 1, fontWeight: 700 }}
+            >
+              {location.rating.toFixed(1)}
+            </Typography>
+          </Box>
+          <UserRatingStars
+            locationId={location.id}
+            userRating={userRating}
+            onRated={(val) => setUserRating(val)}
+          />
         </Box>
-        {hover && (
+        {isFullViewOpen && (
           <Box
             sx={{
               position: 'fixed',
@@ -151,10 +277,9 @@ export default function LocationDetails() {
               border: '1.5px solid rgba(255,255,255,0.25)',
               transition: 'background 0.3s',
             }}
-            onMouseLeave={() => setHover(false)}
-            onClick={() => {
-              setHover(false);
-              setIgnoreNextHover(true);
+            onClick={(e) => {
+              e.stopPropagation();
+              setFullViewOpen(false);
             }}
             tabIndex={0}
             aria-label="Close full image"
@@ -175,6 +300,7 @@ export default function LocationDetails() {
                 '&:hover': {
                   transform: 'scale(1.04) rotate(-1deg)',
                 },
+                zIndex: 1350,
               }}
             />
           </Box>

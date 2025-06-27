@@ -1,20 +1,20 @@
 from datetime import datetime
 
 from django.contrib.auth.models import User
+from django.db import models
 from rest_framework import generics
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.generics import CreateAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Location
-from .serializers import LocationSerializer, UserSerializer
+from .models import Location, Rating
+from .serializers import LocationSerializer, RatingSerializer, UserSerializer
 from .utils import find_route
 
 
-class SignupView(CreateAPIView):
+class SignupView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
@@ -95,7 +95,57 @@ class LocationListByCategoryView(generics.ListAPIView):
         return qs.order_by("-rating")
 
 
-class LocationDetailView(RetrieveAPIView):
+class LocationDetailView(generics.RetrieveAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
     permission_classes = [AllowAny]
+
+
+class RatingView(generics.GenericAPIView):
+    serializer_class = RatingSerializer
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        location_id = request.data.get("location")
+        value = request.data.get("value")
+        if not location_id or not value:
+            return Response(
+                {"error": "location and value required"},
+                status=400,
+            )
+        try:
+            location = Location.objects.get(pk=location_id)
+        except Location.DoesNotExist:
+            return Response({"error": "Location not found"}, status=404)
+        rating, created = Rating.objects.update_or_create(
+            user=request.user,
+            location=location,
+            defaults={"value": value},
+        )
+        self._update_location_rating(location)
+        return Response(RatingSerializer(rating).data)
+
+    def delete(self, request, *args, **kwargs):
+        location_id = request.data.get("location")
+        if not location_id:
+            return Response(
+                {"error": "location required"},
+                status=400,
+            )
+        try:
+            location = Location.objects.get(pk=location_id)
+        except Location.DoesNotExist:
+            return Response({"error": "Location not found"}, status=404)
+        try:
+            rating = Rating.objects.get(user=request.user, location=location)
+            rating.delete()
+            self._update_location_rating(location)
+            return Response({"success": True})
+        except Rating.DoesNotExist:
+            return Response({"error": "Rating not found"}, status=404)
+
+    def _update_location_rating(self, location):
+        ratings = location.ratings.all()
+        avg = ratings.aggregate(models.Avg("value"))["value__avg"] or 0
+        location.rating = avg
+        location.save()

@@ -72,9 +72,12 @@ export const getLocationsByCategory = async (category) => {
   }
 };
 
-export const getLocationDetails = async (id) => {
+export const getLocationDetails = async (id, token) => {
   try {
-    const res = await api.get(`locations/${id}/`);
+    const config = token
+      ? { headers: { Authorization: `Token ${token}` } }
+      : {};
+    const res = await api.get(`locations/${id}/`, config);
     return res.data;
   } catch (error) {
     throw error.response?.data || error;
@@ -120,4 +123,19 @@ export const updateMyProfile = async (token, { district, about_me, photo }) => {
   } catch (error) {
     throw error.response?.data || error;
   }
+};
+
+export const rateLocation = async (locationId, value, token) => {
+  return api.post(
+    'rating/',
+    { location: locationId, value },
+    { headers: { Authorization: `Token ${token}` } }
+  );
+};
+
+export const removeRating = async (locationId, token) => {
+  return api.delete('rating/', {
+    data: { location: locationId },
+    headers: { Authorization: `Token ${token}` },
+  });
 };

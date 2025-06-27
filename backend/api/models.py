@@ -28,3 +28,17 @@ class Route(models.Model):
 
     def __str__(self):
         return f"{self.source.name} - {self.destination.name}"
+
+
+class Rating(models.Model):
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="ratings")
+    value = models.PositiveSmallIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ("user", "location")
+
+    def __str__(self):
+        return f"{self.user.username} rated {self.location.name}: {self.value}"

@@ -6,6 +6,7 @@ from .views import (
     RouteView,
     LocationListByCategoryView,
     LocationDetailView,
+    RatingView,
 )
 
 urlpatterns = [
@@ -15,4 +16,5 @@ urlpatterns = [
     path("route/", RouteView.as_view(), name="route"),
     path("locations/", LocationListByCategoryView.as_view(), name="locations-by-category"),
     path("locations/<int:pk>/", LocationDetailView.as_view(), name="location-detail"),
+    path("rating/", RatingView.as_view(), name="rating"),
 ]
