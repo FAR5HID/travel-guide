@@ -19,12 +19,18 @@ class SignupView(generics.CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
 
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+        user = self.get_queryset().get(pk=response.data["id"])
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({"token": token.key})
+
 
 class LoginView(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
         token = Token.objects.get(key=response.data["token"])
-        return Response({"token": token.key, "user_id": token.user_id})
+        return Response({"token": token.key})
 
 
 class LogoutView(APIView):
