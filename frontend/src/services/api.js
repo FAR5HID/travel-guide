@@ -8,6 +8,7 @@ const api = axios.create({
   },
 });
 
+// Authentication API
 export const signup = async (
   username,
   password,
@@ -52,6 +53,7 @@ export const logout = async (token) => {
   }
 };
 
+// Route finding API
 export const getRoute = async (params) => {
   try {
     const res = await api.post('route/', params);
@@ -61,6 +63,7 @@ export const getRoute = async (params) => {
   }
 };
 
+// Location API
 export const getLocationsByCategory = async (category) => {
   try {
     const res = await api.get('locations/', {
@@ -84,6 +87,7 @@ export const getLocationDetails = async (id, token) => {
   }
 };
 
+// Profile API
 export const getProfile = async (username, token) => {
   try {
     const res = await api.get(
@@ -125,6 +129,7 @@ export const updateMyProfile = async (token, { district, about_me, photo }) => {
   }
 };
 
+// Rating API
 export const rateLocation = async (locationId, value, token) => {
   return api.post(
     'rating/',
@@ -136,6 +141,61 @@ export const rateLocation = async (locationId, value, token) => {
 export const removeRating = async (locationId, token) => {
   return api.delete('rating/', {
     data: { location: locationId },
+    headers: { Authorization: `Token ${token}` },
+  });
+};
+
+// Travel Partner API
+export const getTravelPartnerRequests = async (token) => {
+  const config = token ? { headers: { Authorization: `Token ${token}` } } : {};
+  const res = await api.get('/travel-partner/requests/', config);
+  return res.data;
+};
+
+export const createTravelPartnerRequest = async (data, token) => {
+  const config = token ? { headers: { Authorization: `Token ${token}` } } : {};
+  const res = await api.post('/travel-partner/requests/', data, config);
+  return res.data;
+};
+
+export const getTravelPartnerRequestDetail = async (id, token) => {
+  const config = token ? { headers: { Authorization: `Token ${token}` } } : {};
+  const res = await api.get(`/travel-partner/requests/${id}/`, config);
+  return res.data;
+};
+
+export const addTravelPartnerComment = async (id, text, token) => {
+  const config = token ? { headers: { Authorization: `Token ${token}` } } : {};
+  const res = await api.post(
+    `/travel-partner/requests/${id}/add_comment/`,
+    { text },
+    config
+  );
+  return res.data;
+};
+
+export const updateTravelPartnerRequest = async (id, data, token) => {
+  const res = await api.patch(`/travel-partner/requests/${id}/`, data, {
+    headers: { Authorization: `Token ${token}` },
+  });
+  return res.data;
+};
+
+export const deleteTravelPartnerRequest = async (id, token) => {
+  await api.delete(`/travel-partner/requests/${id}/`, {
+    headers: { Authorization: `Token ${token}` },
+  });
+};
+
+export const updateTravelPartnerComment = async (id, data, token) => {
+  const res = await api.patch(`/travel-partner/comments/${id}/`, data, {
+    headers: { Authorization: `Token ${token}` },
+  });
+  return res.data;
+};
+
+export const deleteTravelPartnerComment = async (id, token) => {
+  await api.delete(`/travel-partner/comments/${id}/`, {
     headers: { Authorization: `Token ${token}` },
   });
 };

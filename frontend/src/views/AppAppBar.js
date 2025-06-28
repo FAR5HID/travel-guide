@@ -43,7 +43,25 @@ function AppAppBar({ onLogout }) {
             />
             {'travel guide'}
           </Link>
-          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+          <Box
+            sx={{
+              flex: 1,
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+            }}
+          >
+            <Link
+              color="inherit"
+              variant="h6"
+              underline="none"
+              component={RouterLink}
+              to="/travel-partner"
+              sx={{ ...rightLink, mr: 5 }}
+              aria-label="Find Travel Partner"
+            >
+              {'Find Travel Partner'}
+            </Link>
             {auth && auth.token ? (
               <ProfileMenu onLogout={onLogout} />
             ) : (

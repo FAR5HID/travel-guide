@@ -9,6 +9,8 @@ import CategoryPage from './pages/CategoryPage';
 import LocationDetails from './pages/LocationDetails';
 import ProfilePage from './pages/ProfilePage';
 import EditProfilePage from './pages/EditProfilePage';
+import FindTravelPartnerPage from './pages/FindTravelPartnerPage';
+import TravelPartnerDetailPage from './pages/TravelPartnerDetailPage';
 import { getMyProfile } from './services/api';
 
 function App() {
@@ -44,18 +46,15 @@ function App() {
       <Router>
         <Layout onLogout={handleLogout}>
           <Routes>
-            <Route
-              path="/"
-              element={
-                <Home auth={auth} onAuth={handleAuth} onLogout={handleLogout} />
-              }
-            />
+            <Route path="/" element={<Home auth={auth} onAuth={handleAuth} onLogout={handleLogout} />} />
             <Route path="/signin" element={<SignIn onAuth={handleAuth} />} />
             <Route path="/signup" element={<SignUp onAuth={handleAuth} />} />
             <Route path="/category/:categoryName" element={<CategoryPage />} />
             <Route path="/location/:id" element={<LocationDetails />} />
             <Route path="/profile/:username" element={<ProfilePage />} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
+            <Route path="/travel-partner" element={<FindTravelPartnerPage />} />
+            <Route path="/travel-partner/:id" element={<TravelPartnerDetailPage />} />
           </Routes>
         </Layout>
       </Router>

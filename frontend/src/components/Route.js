@@ -121,7 +121,7 @@ export default function Route() {
           border: '1px solid #eee',
           borderRadius: 2,
           bgcolor: 'background.paper',
-          boxShadow: 3,
+          boxShadow: 6,
         }}
         aria-label="Travel Route Search Form"
       >
@@ -412,6 +412,25 @@ export default function Route() {
                 </Grid>
               ))}
             </Grid>
+            <Box sx={{ mt: 2, textAlign: 'center' }}>
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={() => {
+                  // Prepopulate travel partner form with all route form data
+                  navigate('/travel-partner', {
+                    state: {
+                      prefill: {
+                        ...form,
+                      },
+                    },
+                  });
+                }}
+                sx={{ mt: 2 }}
+              >
+                Find Travel Partner for this Route
+              </Button>
+            </Box>
           </Box>
         )}
       </Box>

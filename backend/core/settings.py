@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Local apps
     'api',
     'profile',
+    'travel_partner',
 ]
 
 # =========================
