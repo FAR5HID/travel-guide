@@ -111,8 +111,14 @@ export const getMyProfile = async (token) => {
   }
 };
 
-export const updateMyProfile = async (token, { district, about_me, photo }) => {
+export const updateMyProfile = async (
+  token,
+  { first_name, last_name, mobile, district, about_me, photo }
+) => {
   const formData = new FormData();
+  if (first_name !== undefined) formData.append('first_name', first_name);
+  if (last_name !== undefined) formData.append('last_name', last_name);
+  if (mobile !== undefined) formData.append('mobile', mobile);
   if (district !== undefined) formData.append('district', district);
   if (about_me !== undefined) formData.append('about_me', about_me);
   if (photo) formData.append('photo', photo);
