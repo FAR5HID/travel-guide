@@ -227,3 +227,42 @@ export const getWeatherForecast = async (district, startDate, endDate) => {
   const data = await res.json();
   return data.days || [];
 };
+
+// Calendarific Holidays API
+export const getBangladeshHolidaysInRange = async (startDate, endDate) => {
+  const apiKey = process.env.REACT_APP_CALENDARIFIC_KEY;
+  if (!apiKey) throw new Error('Calendarific API key not set');
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  if (isNaN(start) || isNaN(end)) return [];
+
+  const ymSet = new Set([
+    `${start.getFullYear()}-${start.getMonth() + 1}`,
+    `${end.getFullYear()}-${end.getMonth() + 1}`,
+  ]);
+  const ymArr = Array.from(ymSet).map((ym) => {
+    const [year, month] = ym.split('-');
+    return { year: Number(year), month: Number(month) };
+  });
+
+  let holidays = [];
+  for (const { year, month } of ymArr) {
+    const url = `https://calendarific.com/api/v2/holidays?api_key=${apiKey}&country=BD&year=${year}&month=${month}`;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      const data = await res.json();
+      if (data && data.response && Array.isArray(data.response.holidays)) {
+        holidays = holidays.concat(data.response.holidays);
+      }
+    } catch (e) {
+      // ignore errors for individual months
+    }
+  }
+
+  // Filter holidays within the range
+  return holidays.filter((h) => {
+    const date = new Date(h.date.iso);
+    return date >= start && date <= end;
+  });
+};

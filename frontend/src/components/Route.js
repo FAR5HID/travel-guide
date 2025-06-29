@@ -84,6 +84,9 @@ export default function Route() {
   const [weather, setWeather] = useState(null);
   const [weatherLoading, setWeatherLoading] = useState(false);
   const [weatherError, setWeatherError] = useState(null);
+  const [crowdAlert, setCrowdAlert] = useState(null); // new: holidays in range
+  const [crowdAlertLoading, setCrowdAlertLoading] = useState(false);
+  const [crowdAlertError, setCrowdAlertError] = useState(null);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -100,6 +103,8 @@ export default function Route() {
     setLoading(true);
     setWeather(null);
     setWeatherError(null);
+    setCrowdAlert(null);
+    setCrowdAlertError(null);
     try {
       const data = await getRoute(form);
       setRoute(data.route);
@@ -116,6 +121,22 @@ export default function Route() {
         setWeatherError('Failed to fetch weather forecast');
       } finally {
         setWeatherLoading(false);
+      }
+      // Fetch holidays (crowd alert)
+      setCrowdAlertLoading(true);
+      try {
+        const { getBangladeshHolidaysInRange } = await import(
+          '../services/api'
+        );
+        const holidays = await getBangladeshHolidaysInRange(
+          form.start_date,
+          form.end_date
+        );
+        setCrowdAlert(holidays);
+      } catch (err) {
+        setCrowdAlertError('Failed to check holidays for crowd alert');
+      } finally {
+        setCrowdAlertLoading(false);
       }
     } catch (err) {
       if (err && err.error) {
@@ -433,7 +454,7 @@ export default function Route() {
               ))}
             </Grid>
             {/* Weather Forecast Section */}
-            <Box sx={{ mt: 6, mb: 4 }}>
+            <Box sx={{ mt: 8, mb: 4 }}>
               <Typography variant="h4" align="center" gutterBottom>
                 Weather Forecast
               </Typography>
@@ -514,6 +535,56 @@ export default function Route() {
                     </Box>
                   ))}
                 </Box>
+              )}
+            </Box>
+            {/* Crowd Alert Section */}
+            <Box sx={{ mt: 4, mb: 4 }}>
+              <Typography variant="h4" align="center" gutterBottom>
+                Crowd Alert
+              </Typography>
+              {crowdAlertLoading && (
+                <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
+                  <CircularProgress size={20} />
+                </Box>
+              )}
+              {crowdAlertError && (
+                <Typography color="error" align="center">
+                  {crowdAlertError}
+                </Typography>
+              )}
+              {crowdAlert && crowdAlert.length > 0 ? (
+                <Box
+                  sx={{
+                    textAlign: 'center',
+                    color: 'darkorange',
+                    fontWeight: 600,
+                  }}
+                >
+                  <Typography variant="body1">
+                    Your selected dates include the following public holidays:
+                  </Typography>
+                  <ul style={{ display: 'inline-block', textAlign: 'left' }}>
+                    {crowdAlert.map((h) => (
+                      <li key={h.date.iso}>
+                        {h.name} ({h.date.iso})
+                      </li>
+                    ))}
+                  </ul>
+                  <Typography variant="body2" color="text.secondary">
+                    Expect larger crowds and higher demand for travel and
+                    accommodation.
+                  </Typography>
+                </Box>
+              ) : (
+                crowdAlert && (
+                  <Typography
+                    variant="body1"
+                    align="center"
+                    color="success.main"
+                  >
+                    No major public holidays.
+                  </Typography>
+                )
               )}
             </Box>
             <Box sx={{ mt: 2, textAlign: 'center' }}>
