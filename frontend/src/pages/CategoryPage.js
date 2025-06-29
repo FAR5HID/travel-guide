@@ -14,10 +14,10 @@ const getCategoryImage = (category) => {
     [CATEGORIES[2]]: '/images/Amiakhum.png',
     [CATEGORIES[3]]: '/images/Saint_Martin.jpg',
     [CATEGORIES[4]]: '/images/Kaptai_Lake.jpg',
-    [CATEGORIES[5]]: '/images/Kris_Taung_2.jpg',
-    [CATEGORIES[6]]: '/images/Dulahazara_Safari_Park.jpg',
-    [CATEGORIES[7]]: '/images/Shalban_Bihar.jpg',
-    [CATEGORIES[8]]: '/images/Chandranath_1.jpg',
+    [CATEGORIES[6]]: '/images/Kris_Taung_2.jpg',
+    [CATEGORIES[7]]: '/images/Dulahazara_Safari_Park.jpg',
+    [CATEGORIES[8]]: '/images/Shalban_Bihar.jpg',
+    [CATEGORIES[9]]: '/images/Chandranath_1.jpg',
   };
   return images[category] || '/images/placeholder.png';
 };

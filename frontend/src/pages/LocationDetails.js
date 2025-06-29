@@ -319,6 +319,32 @@ export default function LocationDetails() {
           zIndex: 2,
         }}
       >
+        {/* Google Maps Preview for the location */}
+        <Box
+          sx={{
+            width: '100%',
+            maxWidth: 700,
+            height: 350,
+            mx: 'auto',
+            mb: 4,
+            boxShadow: 10,
+            borderRadius: 4,
+            overflow: 'hidden',
+          }}
+        >
+          <iframe
+            title="Google Maps Preview"
+            width="100%"
+            height="350"
+            style={{ border: 0 }}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            src={`https://www.google.com/maps?q=${encodeURIComponent(
+              location.name
+            )}&output=embed`}
+          />
+        </Box>
         <Typography
           variant="body1"
           sx={{ color: 'text.secondary', fontSize: 18 }}

@@ -453,8 +453,49 @@ export default function Route() {
                 </Grid>
               ))}
             </Grid>
+
+            {/* Google Maps Route Button Section */}
+            {route.length > 1 && (
+              <Box
+                sx={{
+                  mt: 8,
+                  mb: 6,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  fontSize={'1.5rem'}
+                  fontWeight={900}
+                  align="center"
+                  gutterBottom
+                >
+                  View Route in Google Maps
+                </Typography>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  href={`https://www.google.com/maps/dir/${route
+                    .map((loc) =>
+                      encodeURIComponent(loc.name.replace(/\s+/g, '+'))
+                    )
+                    .join('/')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ mb: 2 }}
+                >
+                  Open Directions
+                </Button>
+                <Typography variant="body2" color="text.secondary">
+                  Directions will open in a new tab
+                </Typography>
+              </Box>
+            )}
+
             {/* Weather Forecast Section */}
-            <Box sx={{ mt: 8, mb: 4 }}>
+            <Box sx={{ mt: 6, mb: 4 }}>
               <Typography variant="h4" align="center" gutterBottom>
                 Weather Forecast
               </Typography>
