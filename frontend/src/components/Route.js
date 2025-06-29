@@ -18,11 +18,12 @@ import {
   useMediaQuery,
   CircularProgress,
 } from '@mui/material';
+import WaterDropIcon from '@mui/icons-material/WaterDrop';
 
 // Project-specific imports
-import { getRoute } from '../services/api';
 import { DISTRICTS, CATEGORIES, TRAVEL_TIERS } from '../constants/options';
 import { validateDateRange } from '../form/validation';
+import { getRoute, getWeatherForecast } from '../services/api';
 
 const columns = { xs: 1, sm: 2, md: 3, lg: 4 }; // Grid breakpoints
 
@@ -80,6 +81,9 @@ export default function Route() {
   const [route, setRoute] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [weather, setWeather] = useState(null);
+  const [weatherLoading, setWeatherLoading] = useState(false);
+  const [weatherError, setWeatherError] = useState(null);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -94,9 +98,25 @@ export default function Route() {
       return;
     }
     setLoading(true);
+    setWeather(null);
+    setWeatherError(null);
     try {
       const data = await getRoute(form);
       setRoute(data.route);
+      // Fetch weather only after successful route fetch
+      setWeatherLoading(true);
+      try {
+        const weatherData = await getWeatherForecast(
+          form.destination,
+          form.start_date,
+          form.end_date
+        );
+        setWeather(weatherData);
+      } catch (err) {
+        setWeatherError('Failed to fetch weather forecast');
+      } finally {
+        setWeatherLoading(false);
+      }
     } catch (err) {
       if (err && err.error) {
         setError(err.error);
@@ -296,7 +316,7 @@ export default function Route() {
                       borderRadius: 3,
                       p: 0,
                       bgcolor: 'background.default',
-                      boxShadow: 6,
+                      boxShadow: 15,
                       overflow: 'hidden',
                       transition:
                         'transform 0.2s, box-shadow 0.3s, border-radius 0.6s',
@@ -305,7 +325,7 @@ export default function Route() {
                       cursor: 'pointer',
                       '&:hover': {
                         transform: 'scale(1.07)',
-                        boxShadow: 12,
+                        boxShadow: 18,
                         borderRadius: 0,
                       },
                     }}
@@ -412,6 +432,90 @@ export default function Route() {
                 </Grid>
               ))}
             </Grid>
+            {/* Weather Forecast Section */}
+            <Box sx={{ mt: 6, mb: 4 }}>
+              <Typography variant="h4" align="center" gutterBottom>
+                Weather Forecast
+              </Typography>
+              {weatherLoading && (
+                <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
+                  <CircularProgress size={24} />
+                </Box>
+              )}
+              {weatherError && (
+                <Typography color="error" align="center">
+                  {weatherError}
+                </Typography>
+              )}
+              {weather && weather.length > 0 && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    overflowX: 'auto',
+                    gap: 2,
+                    py: 2,
+                    justifyContent: 'center',
+                  }}
+                >
+                  {weather.map((day) => (
+                    <Box
+                      key={day.datetime}
+                      sx={{
+                        minWidth: 140,
+                        p: 2,
+                        borderRadius: 2,
+                        bgcolor: 'background.paper',
+                        boxShadow: 6,
+                        textAlign: 'center',
+                      }}
+                    >
+                      <Typography variant="subtitle2">
+                        {new Date(day.datetime).toLocaleDateString('en-GB', {
+                          weekday: 'short',
+                          day: 'numeric',
+                          month: 'short',
+                        })}
+                      </Typography>
+                      <Box>
+                        <img
+                          src={`https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/2nd%20Set%20-%20Color/${day.icon}.png`}
+                          alt={day.conditions}
+                          width={48}
+                          height={48}
+                          style={{ objectFit: 'contain' }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = '/images/placeholder.png';
+                          }}
+                        />
+                      </Box>
+                      <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                        {Math.round(day.tempmin)}°C | {Math.round(day.tempmax)}
+                        °C
+                      </Typography>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <WaterDropIcon
+                          color="primary"
+                          sx={{ fontSize: 20, mr: 0.5 }}
+                        />
+                        <Typography variant="body2" color="text.secondary">
+                          {day.humidity}%
+                        </Typography>
+                      </Box>
+                      <Typography variant="body2" color="text.secondary">
+                        {day.conditions}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              )}
+            </Box>
             <Box sx={{ mt: 2, textAlign: 'center' }}>
               <Button
                 variant="outlined"

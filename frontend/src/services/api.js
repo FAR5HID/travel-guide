@@ -205,3 +205,25 @@ export const deleteTravelPartnerComment = async (id, token) => {
     headers: { Authorization: `Token ${token}` },
   });
 };
+
+// Visual Crossing Weather API
+export const getWeatherForecast = async (district, startDate, endDate) => {
+  const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+  let start = startDate;
+  let end = endDate;
+  if (!start || !end) {
+    // Default: next 7 days
+    const today = new Date();
+    start = today.toISOString().slice(0, 10);
+    const future = new Date(today);
+    future.setDate(today.getDate() + 6);
+    end = future.toISOString().slice(0, 10);
+  }
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodeURIComponent(
+    district
+  )}/${start}/${end}?unitGroup=metric&key=${apiKey}&contentType=json`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Weather API error');
+  const data = await res.json();
+  return data.days || [];
+};
