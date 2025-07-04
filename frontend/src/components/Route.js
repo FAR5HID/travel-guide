@@ -605,11 +605,33 @@ export default function Route() {
                     Your selected dates include the following public holidays:
                   </Typography>
                   <ul style={{ display: 'inline-block', textAlign: 'left' }}>
-                    {crowdAlert.map((h) => (
-                      <li key={h.date.iso}>
-                        {h.name} ({h.date.iso})
-                      </li>
-                    ))}
+                    {crowdAlert.map((h) => {
+                      const dateObj = new Date(h.date.iso);
+                      const weekday = dateObj.toLocaleDateString('en-US', {
+                        weekday: 'long',
+                      });
+                      const isLongWeekend =
+                        weekday === 'Thursday' || weekday === 'Sunday';
+                      return (
+                        <li key={h.date.iso}>
+                          {h.name} ({h.date.iso})
+                          {isLongWeekend && (
+                            <span
+                              style={{
+                                color: 'crimson',
+                                fontWeight: 700,
+                                marginLeft: 6,
+                              }}
+                            >
+                              [Long Weekend!]
+                            </span>
+                          )}
+                          <span style={{ color: '#888', marginLeft: 6 }}>
+                            ({weekday})
+                          </span>
+                        </li>
+                      );
+                    })}
                   </ul>
                   <Typography variant="body2" color="text.secondary">
                     Expect larger crowds and higher demand for travel and
