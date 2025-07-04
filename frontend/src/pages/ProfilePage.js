@@ -142,9 +142,11 @@ function ProfilePage() {
         >
           {profile.district}
         </Typography>
-        <Typography variant="body2" color="text.secondary" align="center">
-          Mobile: {profile.mobile}
-        </Typography>
+        {profile.username === auth?.user?.username && (
+          <Typography variant="body2" color="text.secondary" align="center">
+            Mobile: {profile.mobile}
+          </Typography>
+        )}
       </Box>
       <Divider sx={{ mb: 3 }} />
       <Typography
