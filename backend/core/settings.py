@@ -177,3 +177,12 @@ LOGGING = {
         },
     },
 }
+
+# =========================
+# CKEditor Configuration
+# =========================
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    }
+}

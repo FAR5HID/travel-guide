@@ -95,7 +95,7 @@ class LocationListByCategoryView(generics.ListAPIView):
 
     def get_queryset(self):
         category = self.request.query_params.get("category")
-        qs = Location.objects.all()
+        qs = Location.objects.exclude(name=models.F("district"))
         if category:
             qs = qs.filter(category__contains=[category])
         return qs.order_by("-rating")

@@ -73,7 +73,7 @@ export default function CategoryPage() {
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             zIndex: 1,
-            p: 0,
+            p: 1,
             m: 0,
           }}
         >
