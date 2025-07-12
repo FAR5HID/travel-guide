@@ -1,0 +1,1595 @@
+[
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কক্সবাজার",
+      "rating": 0.0,
+      "district": "কক্সবাজার",
+      "category": ["সমুদ্র", "পাহাড়", "উদ্যান", "ঝর্ণা", "দ্বীপ", "অরণ্য", "ধর্মীয়", "নদী"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "দরিয়া নগর",
+      "rating": 4.5,
+      "district": "কক্সবাজার",
+      "category": ["সমুদ্র", "পাহাড়", "উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "শাহেন শাহ গুহা",
+      "rating": 4.2,
+      "district": "কক্সবাজার",
+      "category": ["গুহা"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "হিমছড়ি",
+      "rating": 4.3,
+      "district": "কক্সবাজার",
+      "category": ["সমুদ্র", "ঝর্ণা", "পাহাড়"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ইনানী",
+      "rating": 4.6,
+      "district": "কক্সবাজার",
+      "category": ["সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "পাটুয়ারটেক",
+      "rating": 4.4,
+      "district": "কক্সবাজার",
+      "category": ["সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সোনাদিয়া দ্বীপ",
+      "rating": 4.7,
+      "district": "কক্সবাজার",
+      "category": ["দ্বীপ", "সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কুতুবদিয়া দ্বীপ",
+      "rating": 4.5,
+      "district": "কক্সবাজার",
+      "category": ["দ্বীপ", "সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মহেশখালী",
+      "rating": 4.6,
+      "district": "কক্সবাজার",
+      "category": ["দ্বীপ", "সমুদ্র", "পাহাড়"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "আদিনাথ মন্দির",
+      "rating": 4.5,
+      "district": "কক্সবাজার",
+      "category": ["ধর্মীয়", "পাহাড়"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "টেকনাফ জেটি ঘাট",
+      "rating": 4.4,
+      "district": "কক্সবাজার",
+      "category": ["নদী"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সেন্টমার্টিন",
+      "rating": 4.8,
+      "district": "কক্সবাজার",
+      "category": ["দ্বীপ", "সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ছেঁড়া দ্বীপ",
+      "rating": 4.5,
+      "district": "কক্সবাজার",
+      "category": ["দ্বীপ", "সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রেডিয়েন্ট ফিস ওয়ার্ল্ড",
+      "rating": 4.3,
+      "district": "কক্সবাজার",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রামু বৌদ্ধ বিহার",
+      "rating": 4.5,
+      "district": "কক্সবাজার",
+      "category": ["ধর্মীয়"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ডুলাহাজারা সাফারি পার্ক",
+      "rating": 4.6,
+      "district": "কক্সবাজার",
+      "category": ["অরণ্য", "উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মাথিনের কূপ",
+      "rating": 4.3,
+      "district": "কক্সবাজার",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সাবরাং পর্যটন পার্ক",
+      "rating": 4.4,
+      "district": "কক্সবাজার",
+      "category": ["উদ্যান", "সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "শাহপরীর দ্বীপ",
+      "rating": 4.5,
+      "district": "কক্সবাজার",
+      "category": ["সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "চট্টগ্রাম",
+      "rating": 0.0,
+      "district": "চট্টগ্রাম",
+      "category": ["উদ্যান", "নদী", "সমুদ্র", "হ্রদ", "পাহাড়", "অরণ্য", "ধর্মীয়", "ঝর্ণা", "দ্বীপ"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সিআরবি",
+      "rating": 4.5,
+      "district": "চট্টগ্রাম",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "চট্টগ্রাম ওয়ার সিমেট্রি",
+      "rating": 4.5,
+      "district": "চট্টগ্রাম",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ডিসি পার্ক",
+      "rating": 4.2,
+      "district": "চট্টগ্রাম",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "জাম্বুরি পার্ক",
+      "rating": 4.3,
+      "district": "চট্টগ্রাম",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "অভয় মিত্র ঘাট",
+      "rating": 4.2,
+      "district": "চট্টগ্রাম",
+      "category": ["নদী"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "পতেঙ্গা সমুদ্র সৈকত",
+      "rating": 4.4,
+      "district": "চট্টগ্রাম",
+      "category": ["সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ফয়েজ লেক",
+      "rating": 4.5,
+      "district": "চট্টগ্রাম",
+      "category": ["হ্রদ", "উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "হাজারিখিল অভয়ারণ্য",
+      "rating": 4.6,
+      "district": "চট্টগ্রাম",
+      "category": ["পাহাড়", "অরণ্য", "উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ভাটিয়ারী লেক",
+      "rating": 4.5,
+      "district": "চট্টগ্রাম",
+      "category": ["হ্রদ"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কুমিরা ঘাট",
+      "rating": 4.4,
+      "district": "চট্টগ্রাম",
+      "category": ["সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বাঁশবাড়িয়া সমুদ্র সৈকত",
+      "rating": 4.4,
+      "district": "চট্টগ্রাম",
+      "category": ["সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বাড়বকুণ্ড অগ্নিকুণ্ড",
+      "rating": 4.0,
+      "category": ["ধর্মীয়"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বাড়বকুণ্ড ঝর্ণা",
+      "rating": 4.4,
+      "category": ["ঝর্ণা"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সুপ্তধারা ঝর্ণা",
+      "rating": 4.5,
+      "category": ["ঝর্ণা"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সহস্রধারা ঝর্ণা",
+      "rating": 4.4,
+      "category": ["ঝর্ণা"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "চন্দ্রনাথ",
+      "rating": 4.5,
+      "district": "চট্টগ্রাম",
+      "category": ["পাহাড়", "ধর্মীয়"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "গুলিয়াখালী সমুদ্র সৈকত",
+      "rating": 4.4,
+      "district": "চট্টগ্রাম",
+      "category": ["সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ঝরঝরি ঝর্ণা",
+      "rating": 4.5,
+      "category": ["ঝর্ণা"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সহস্রধারা ঝর্ণা ২",
+      "rating": 4.3,
+      "category": ["ঝর্ণা"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বড় কমলদহ ঝর্ণা",
+      "rating": 4.5,
+      "category": ["ঝর্ণা"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "নাপিত্তাছড়া ঝর্ণা",
+      "rating": 4.5,
+      "category": ["ঝর্ণা"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "খৈয়াছড়া ঝর্ণা",
+      "rating": 4.5,
+      "category": ["ঝর্ণা"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মহামায়া লেক",
+      "rating": 4.5,
+      "district": "চট্টগ্রাম",
+      "category": ["হ্রদ"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "পারকি সমুদ্র সৈকত",
+      "rating": 4.4,
+      "district": "চট্টগ্রাম",
+      "category": ["সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বাঁশখালী ইকোপার্ক",
+      "rating": 4.6,
+      "district": "চট্টগ্রাম",
+      "category": ["অরণ্য", "উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বাঁশখালী সমুদ্র সৈকত",
+      "rating": 4.2,
+      "category": ["সমুদ্র"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "চট্টগ্রাম প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয়",
+      "rating": 4.6,
+      "category": [],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মহামুনি মন্দির",
+      "rating": 4.3,
+      "category": ["ধর্মীয়"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বেতাগী",
+      "rating": 4.2,
+      "category": ["নদী"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "গোডাউন ব্রিজ",
+      "rating": 4.4,
+      "category": ["নদী"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কোদালা চা বাগান",
+      "rating": 4.4,
+      "category": ["উদ্যান"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "শেখ রাসেল এভিয়ারি পার্ক",
+      "rating": 4.0,
+      "category": ["উদ্যান"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "জলতরঙ্গে ঝিলিমিলি",
+      "rating": 4.3,
+      "category": ["নদী", "উদ্যান"],
+      "district": "চট্টগ্রাম"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সন্দ্বীপ",
+      "rating": 4.5,
+      "district": "চট্টগ্রাম",
+      "category": ["দ্বীপ", "সমুদ্র"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কুমিল্লা",
+      "rating": 0.0,
+      "district": "কুমিল্লা",
+      "category": ["ঐতিহাসিক", "উদ্যান", "হ্রদ"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "শালবন বিহার",
+      "rating": 4.4,
+      "district": "কুমিল্লা",
+      "category": ["ঐতিহাসিক"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ময়নামতি জাদুঘর",
+      "rating": 4.3,
+      "district": "কুমিল্লা",
+      "category": ["ঐতিহাসিক"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ময়নামতি ওয়ার সিমেট্রি",
+      "rating": 4.6,
+      "district": "কুমিল্লা",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "আনন্দ বিহার",
+      "rating": 4.2,
+      "district": "কুমিল্লা",
+      "category": ["ঐতিহাসিক"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ইটাখোলা মুড়া",
+      "rating": 4.4,
+      "district": "কুমিল্লা",
+      "category": ["ঐতিহাসিক"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রূপবান মুড়া",
+      "rating": 4.5,
+      "district": "কুমিল্লা",
+      "category": ["ঐতিহাসিক"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রানি ময়নামতির প্রাসাদ",
+      "rating": 4.3,
+      "district": "কুমিল্লা",
+      "category": ["ঐতিহাসিক"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বাংলাদেশ পল্লী উন্নয়ন একাডেমী (বার্ড)",
+      "rating": 4.0,
+      "district": "কুমিল্লা",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ধর্মসাগর দীঘি",
+      "rating": 4.4,
+      "district": "কুমিল্লা",
+      "category": ["হ্রদ"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ম্যাজিক প্যারাডাইস পার্ক",
+      "rating": 4.1,
+      "district": "কুমিল্লা",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "নব শালবন বিহার",
+      "rating": 4.4,
+      "district": "কুমিল্লা",
+      "category": ["ঐতিহাসিক"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "নোয়াখালী",
+      "rating": 0.0,
+      "district": "নোয়াখালী",
+      "category": ["সমুদ্র", "দ্বীপ", "অরণ্য", "ধর্মীয়", "নদী", "উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "নিঝুম দ্বীপ",
+      "rating": 4.5,
+      "district": "নোয়াখালী",
+      "category": ["সমুদ্র", "দ্বীপ", "অরণ্য"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "দমার চর",
+      "rating": 4.3,
+      "district": "নোয়াখালী",
+      "category": ["সমুদ্র", "দ্বীপ"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বজরা শাহী মসজিদ",
+      "rating": 4.5,
+      "district": "নোয়াখালী",
+      "category": ["ধর্মীয়"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মুছাপুর ক্লোজার",
+      "rating": 4.2,
+      "district": "নোয়াখালী",
+      "category": ["নদী"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "নোয়াখালী ড্রিম ওয়ার্ল্ড পার্ক",
+      "rating": 4.0,
+      "district": "নোয়াখালী",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ব্রাহ্মণবাড়িয়া",
+      "rating": 0.0,
+      "district": "ব্রাহ্মণবাড়িয়া",
+      "category": ["নদী", "উদ্যান", "বাজার", "ধর্মীয়", "ঐতিহাসিক"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "স্বপ্নদ্বীপ",
+      "rating": 3.9,
+      "district": "ব্রাহ্মণবাড়িয়া",
+      "category": ["নদী"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "আবি রিভার পার্ক",
+      "rating": 3.9,
+      "district": "ব্রাহ্মণবাড়িয়া",
+      "category": ["উদ্যান"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কসবা বর্ডার হাট",
+      "rating": 4.1,
+      "district": "ব্রাহ্মণবাড়িয়া",
+      "category": ["বাজার"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কালভৈরব মন্দির",
+      "rating": 4.2,
+      "district": "ব্রাহ্মণবাড়িয়া",
+      "category": ["ধর্মীয়"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "হরিপুর জমিদার বাড়ি",
+      "rating": 4.0,
+      "district": "ব্রাহ্মণবাড়িয়া",
+      "category": ["ঐতিহাসিক"]
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "চাঁদপুর",
+      "rating": 0.0,
+      "category": ["নদী", "ঐতিহাসিক", "ধর্মীয়", "উদ্যান"],
+      "district": "চাঁদপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বড় স্টেশন",
+      "rating": 4.4,
+      "category": ["নদী"],
+      "district": "চাঁদপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রূপসা জমিদার বাড়ি",
+      "rating": 4.3,
+      "category": ["ঐতিহাসিক"],
+      "district": "চাঁদপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "পর্তুগীজ দুর্গ",
+      "rating": 4.2,
+      "category": ["ঐতিহাসিক"],
+      "district": "চাঁদপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "হাজীগঞ্জ ঐতিহাসিক বড় মসজিদ",
+      "rating": 4.2,
+      "category": ["ঐতিহাসিক", "ধর্মীয়"],
+      "district": "চাঁদপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মোহনপুর পর্যটন কেন্দ্র",
+      "rating": 4.0,
+      "category": ["উদ্যান"],
+      "district": "চাঁদপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "লোহাগড়া মঠ",
+      "rating": 4.2,
+      "category": ["ধর্মীয়"],
+      "district": "চাঁদপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "লক্ষ্মীপুর",
+      "rating": 0.0,
+      "category": ["ধর্মীয়", "নদী", "হ্রদ", "ঐতিহাসিক"],
+      "district": "লক্ষ্মীপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "আস্-সালাম জামে মসজিদ",
+      "rating": 4.5,
+      "category": ["ধর্মীয়"],
+      "district": "লক্ষ্মীপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "আলেকজান্ডার মেঘনা বিচ",
+      "rating": 4.4,
+      "category": ["নদী"],
+      "district": "লক্ষ্মীপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "খোয়াসাগর দীঘি",
+      "rating": 4.3,
+      "category": ["হ্রদ"],
+      "district": "লক্ষ্মীপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "দালাল বাজার জমিদার বাড়ি",
+      "rating": 4.2,
+      "category": ["ঐতিহাসিক"],
+      "district": "লক্ষ্মীপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মতিরহাট সৈকত",
+      "rating": 4.2,
+      "category": ["নদী"],
+      "district": "লক্ষ্মীপুর"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ফেনী",
+      "rating": 0.0,
+      "category": ["উদ্যান", "হ্রদ", "ঐতিহাসিক", "নদী", "বাজার", "ধর্মীয়"],
+      "district": "ফেনী"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "শমসের গাজীর বাঁশের কেল্লা রিসোর্ট",
+      "rating": 3.9,
+      "category": ["উদ্যান"],
+      "district": "ফেনী"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রাজাঝির দীঘি",
+      "rating": 4.5,
+      "category": ["হ্রদ"],
+      "district": "ফেনী"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বিজয় সিংহ দীঘি",
+      "rating": 4.3,
+      "category": ["হ্রদ"],
+      "district": "ফেনী"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "প্রতাপপুর জমিদার বাড়ি",
+      "rating": 4.2,
+      "category": ["ঐতিহাসিক"],
+      "district": "ফেনী"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মুহুরী প্রজেক্ট",
+      "rating": 4.2,
+      "category": ["নদী"],
+      "district": "ফেনী"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ছাগলনাইয়া বর্ডার হাট",
+      "rating": 4.1,
+      "category": ["বাজার"],
+      "district": "ফেনী"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কাজিরবাগ ইকো পার্ক",
+      "rating": 4.0,
+      "category": ["উদ্যান"],
+      "district": "ফেনী"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "চাঁদগাজী ভূঁইয়া মসজিদ",
+      "rating": 4.6,
+      "category": ["ধর্মীয়"],
+      "district": "ফেনী"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "খাগড়াছড়ি",
+      "rating": 0.0,
+      "category": ["গুহা", "উদ্যান", "ঝর্ণা", "পাহাড়", "হ্রদ"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "আলুটিলা গুহা",
+      "rating": 4.5,
+      "category": ["গুহা"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "হর্টিকালচার পার্ক",
+      "rating": 4.4,
+      "category": ["উদ্যান"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "হেরিটেজ পার্ক",
+      "rating": 4.1,
+      "category": ["উদ্যান"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "তৈদুছড়া ঝর্ণা",
+      "rating": 4.1,
+      "category": ["ঝর্ণা"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "শান্তিপুর অরণ্য কুটির",
+      "rating": 4.1,
+      "category": ["উদ্যান"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মায়ুং কপাল",
+      "rating": 4.2,
+      "category": ["পাহাড়"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রিসাং ঝর্ণা",
+      "rating": 4.4,
+      "category": ["ঝর্ণা"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মায়াবিনী লেক",
+      "rating": 4.4,
+      "category": ["হ্রদ"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "দেবতার পুকুর",
+      "rating": 4.1,
+      "category": ["হ্রদ"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রামগড় চা বাগান",
+      "rating": 4.0,
+      "category": ["উদ্যান"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সাজেক (রাঙ্গামাটি)",
+      "rating": 4.6,
+      "category": ["পাহাড়"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "হাজাছড়া ঝর্ণা (রাঙ্গামাটি)",
+      "rating": 4.4,
+      "category": ["ঝর্ণা"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "তারেং",
+      "rating": 4.1,
+      "category": ["পাহাড়"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সিজুক ঝর্ণা",
+      "rating": 4.0,
+      "category": ["ঝর্ণা"],
+      "district": "খাগড়াছড়ি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রাঙ্গামাটি",
+      "rating": 0.0,
+      "category": ["নদী", "পাহাড়", "ঝর্ণা", "হ্রদ", "উদ্যান", "ঐতিহাসিক", "দ্বীপ"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কাট্টলী বিল",
+      "rating": 4.2,
+      "category": ["নদী"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কাসালং নদী",
+      "rating": 4.1,
+      "category": ["নদী"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সাজেক",
+      "rating": 4.6,
+      "category": ["পাহাড়"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "হাজাছড়া ঝর্ণা",
+      "rating": 4.4,
+      "category": ["ঝর্ণা"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কাপ্তাই লেক",
+      "rating": 4.7,
+      "category": ["হ্রদ"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "শুভলং ঝর্ণা",
+      "rating": 4.3,
+      "category": ["ঝর্ণা"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ঝুলন্ত ব্রিজ",
+      "rating": 4.2,
+      "category": ["উদ্যান"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ধুপপানি ঝর্ণা",
+      "rating": 4.5,
+      "category": ["ঝর্ণা"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মুপ্পোছড়া ঝর্ণা",
+      "rating": 4.4,
+      "category": ["ঝর্ণা"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "পলওয়েল পার্ক",
+      "rating": 4.3,
+      "category": ["উদ্যান"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বীরশ্রেষ্ঠ মুন্সি আব্দুর রউফের সমাধি",
+      "rating": 4.2,
+      "category": ["উদ্যান"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কমলক ঝর্ণা",
+      "rating": 4.2,
+      "category": ["ঝর্ণা"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "আরণ্যক হলিডে রিসোর্ট",
+      "rating": 4.3,
+      "category": ["উদ্যান"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "লেকশোর রিসোর্ট",
+      "rating": 4.3,
+      "category": ["উদ্যান"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রাজবন বিহার",
+      "rating": 4.4,
+      "category": ["ঐতিহাসিক"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ফুরমোন পাহাড়",
+      "rating": 4.4,
+      "category": ["পাহাড়"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কাপ্তাই কায়াক ক্লাব",
+      "rating": 4.5,
+      "category": ["উদ্যান", "নদী"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "লেক ভিউ আইল্যান্ড",
+      "rating": 4.2,
+      "category": ["দ্বীপ", "উদ্যান", "হ্রদ"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বেড়ান্ন্যে",
+      "rating": 4.4,
+      "category": ["উদ্যান"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মায়াবী দ্বীপ",
+      "rating": 4.2,
+      "category": ["দ্বীপ", "হ্রদ"],
+      "district": "রাঙ্গামাটি"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বান্দরবান",
+      "rating": 0.0,
+      "category": ["ধর্মীয়", "উদ্যান", "পাহাড়", "ঝর্ণা", "নদী", "অরণ্য"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "স্বর্ণ মন্দির",
+      "rating": 4.3,
+      "category": ["ধর্মীয়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মেঘলা পর্যটন কেন্দ্র",
+      "rating": 4.2,
+      "category": ["উদ্যান"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "নীলাচল",
+      "rating": 4.5,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মিলনছড়ি",
+      "rating": 4.2,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "শৈলপ্রপাত ঝর্ণা",
+      "rating": 4.2,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "চিম্বুক",
+      "rating": 4.4,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "নীলগিরি",
+      "rating": 4.4,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "তমা তুঙ্গী",
+      "rating": 4.3,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "তাজিংডং",
+      "rating": 4.5,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "তিন্দু",
+      "rating": 4.4,
+      "category": ["নদী", "পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "লাংলোক ঝর্ণা",
+      "rating": 4.6,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "রেমাক্রি ঝর্ণা",
+      "rating": 4.6,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "নাফাখুম",
+      "rating": 4.7,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "আমিয়াখুম",
+      "rating": 4.8,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ভেলাখুম",
+      "rating": 4.7,
+      "category": ["নদী"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সাতভাইখুম",
+      "rating": 4.6,
+      "category": ["নদী"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "যোগী হাফং",
+      "rating": 4.8,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "জো ত্লাং",
+      "rating": 4.7,
+      "category": ["পাহাড়", "অরণ্য"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সাকা হাফং",
+      "rating": 4.5,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বাকত্লাই ঝর্ণা",
+      "rating": 4.7,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মুনলাই পাড়া",
+      "rating": 4.6,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ঋজুক ঝর্ণা",
+      "rating": 4.5,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "বগালেক",
+      "rating": 4.7,
+      "category": ["হ্রদ"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "চিংড়ি ঝর্ণা",
+      "rating": 4.4,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কেওক্রাডং",
+      "rating": 4.8,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "জাদিপাই ঝর্ণা",
+      "rating": 4.6,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ডাবল ফলস",
+      "rating": 4.5,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "দেবতাখুম",
+      "rating": 4.6,
+      "category": ["নদী"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "তিনাপ সাইতার",
+      "rating": 4.7,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মিরিঞ্জা",
+      "rating": 4.3,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সুখিয়া ভ্যালি",
+      "rating": 4.2,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মারায়ন তং",
+      "rating": 4.6,
+      "category": ["পাহাড়"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "আলীর গুহা",
+      "rating": 4.4,
+      "category": ["গুহা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "মায়া লেক",
+      "rating": 4.1,
+      "category": ["হ্রদ"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "দামতুয়া ঝর্ণা",
+      "rating": 4.5,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "কির্সতং",
+      "rating": 4.5,
+      "category": ["পাহাড়", "অরণ্য"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "সাইংপ্রা ঝর্ণা",
+      "rating": 4.5,
+      "category": ["ঝর্ণা"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "আন্ধারমানিক",
+      "rating": 4.5,
+      "category": ["বাজার"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "ডিম পাহাড়",
+      "rating": 4.5,
+      "category": ["বাজার"],
+      "district": "বান্দরবান"
+    }
+  },
+  {
+    "model": "api.location",
+    "fields": {
+      "name": "নাইক্ষ্যংছড়ি লেক",
+      "rating": 4.2,
+      "category": ["হ্রদ"],
+      "district": "বান্দরবান"
+    }
+  }
+]
